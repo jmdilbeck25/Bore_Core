@@ -56,56 +56,20 @@
       z-index: 100;
     }
 
-    /* Secondary lockup from the brand guide: icon | wordmark over tagline */
+    /* Primary stacked lockup, supplied as a single raster asset. */
     .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-
-    .brand-mark {
       display: block;
-      width: 34px;
-      height: 34px;
-      flex-shrink: 0;
+      height: 56px;
+      width: auto;
+      /* The asset ships on a solid black field. Screen blending drops that
+         black out so the mark sits on the guide's #111111 instead of inside
+         a visible box. Delete this line if you swap in a transparent asset. */
+      mix-blend-mode: screen;
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      border-left: 1px solid var(--border-color);
-      padding-left: 0.85rem;
+    .footer .brand-logo {
+      height: 40px;
     }
-
-    .brand-name {
-      font-family: var(--font-heading);
-      /* Bebas Neue ships a single weight — asking for bold makes the browser
-         synthesize one and smears the letterforms. */
-      font-weight: 400;
-      font-size: 1.6rem;
-      line-height: 1;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text-main);
-    }
-
-    .brand-name-accent {
-      color: var(--accent-orange);
-    }
-
-    .brand-tagline {
-      font-family: var(--font-body);
-      font-weight: 500;
-      font-size: 0.6rem;
-      letter-spacing: 2.4px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
-    }
-
-    .footer .brand-mark { width: 26px; height: 26px; }
-    .footer .brand-name { font-size: 1.2rem; }
-    .footer .brand-tagline { font-size: 0.55rem; }
 
     .nav-links {
       display: flex;
@@ -409,16 +373,7 @@
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="brand-logo">
-      <svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-        <path fill="#ffffff" fill-rule="evenodd" d="M4 4h56l20 20-16 30 20 18-24 44H4Zm26 24v18h20l8-9-8-9Zm0 42v22h22l10-11-10-11Z" />
-        <path fill="#ff6a00" d="M52 4h64L92 40H52Z" />
-      </svg>
-      <span class="brand-text">
-        <span class="brand-name">Bore<span class="brand-name-accent">Core</span></span>
-        <span class="brand-tagline">Underground Infrastructure</span>
-      </span>
-    </div>
+    <img class="brand-logo" src="images/borecore-logo.png" alt="BORECORE — Underground Infrastructure" />
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#capabilities">Capabilities</a></li>
@@ -503,16 +458,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-left">
-      <div class="brand-logo">
-        <svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-          <path fill="#ffffff" fill-rule="evenodd" d="M4 4h56l20 20-16 30 20 18-24 44H4Zm26 24v18h20l8-9-8-9Zm0 42v22h22l10-11-10-11Z" />
-          <path fill="#ff6a00" d="M52 4h64L92 40H52Z" />
-        </svg>
-        <span class="brand-text">
-          <span class="brand-name">Bore<span class="brand-name-accent">Core</span></span>
-          <span class="brand-tagline">Underground Infrastructure</span>
-        </span>
-      </div>
+      <img class="brand-logo" src="images/borecore-logo.png" alt="BORECORE — Underground Infrastructure" />
     </div>
     <div class="footer-links">
       <span>Cornelia, Georgia</span>
