@@ -134,7 +134,7 @@
       inset: -8px; /* bleeds the filter's edge artifacts outside the visible frame */
       background-image: var(--hero-img);
       background-repeat: no-repeat;
-      background-position: 10% center/*right center*/ /* started here: top*/;
+      background-position: 50% center/*right center*/ /* started here: top*/;
       background-size: cover;
       /* Unsharp mask (see #hero-sharpen) then tone. Source is only 720x480, so
          keep the amount modest — pushing harder just amplifies grain. */
@@ -390,13 +390,15 @@
 
   <!-- Unsharp mask for the hero photo: knock down fine grain, then boost edge
        contrast against a broader blur. Browser-side, no image tooling needed. -->
+  <!--
   <svg class="svg-defs" aria-hidden="true" focusable="false">
     <filter id="hero-sharpen" color-interpolation-filters="sRGB">
       <feGaussianBlur in="SourceGraphic" stdDeviation="0.45" result="degrain" />
       <feGaussianBlur in="degrain" stdDeviation="1.5" result="soft" />
       <feComposite in="degrain" in2="soft" operator="arithmetic" k2="1.6" k3="-0.6" />
     </filter>
-  </svg>
+  </svg> 
+-->
 
   <!-- NAVBAR -->
   <nav class="navbar">
