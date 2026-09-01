@@ -341,43 +341,64 @@
   }
 
   @media (max-width: 768px) {
-    .navbar, .hero, .process-section, .cta-banner, .footer {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-
-    .nav-links {
-      display: none; /* Keeps navigation from forcing wide browser width on mobile */
-    }
-
-    .brand-logo {
-      height: 45px;
-    }
-
-    .hero-title { 
-      font-size: 3rem; 
-    }
-
-    .features-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .feature-card {
-      border-right: none;
-      border-bottom: 1px solid var(--border-color);
-    }
-    
-    .footer {
-      flex-direction: column;
-      gap: 1.5rem;
-      align-items: flex-start;
-    }
-    
-    .footer-links {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+  .navbar {
+    padding: 0.8rem 1.2rem;
   }
+
+  .brand-logo {
+    height: 40px; /* Scaled down nicely for phone headers */
+  }
+
+  /* Keep the nav wrapper inline flex */
+  .nav-links {
+    display: flex;
+    gap: 0;
+  }
+
+  /* Hide the lengthy text links on small screens */
+  .nav-links li:not(:last-child) {
+    display: none;
+  }
+
+  /* Keep the "Let's Talk" button visible & compact */
+  .btn-outline {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+  }
+
+  .hero, .process-section, .cta-banner, .footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .process-section {
+    margin-top: 6rem;
+  }
+
+  .hero-title { 
+    font-size: 3rem; 
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .footer {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
 </style>
 </head>
 <body>
