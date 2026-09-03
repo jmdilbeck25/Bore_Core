@@ -49,7 +49,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 4rem;
+    /*padding: 1rem 4rem;*/
     border-bottom: 1px solid var(--border-color);
     background: rgba(14, 16, 18, 0.95);
     position: sticky;
@@ -112,17 +112,18 @@
     padding-bottom: 4rem;
   }
 
-  .hero-wrap::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    background-image: var(--hero-img);
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-    filter: url(#hero-sharpen) contrast(1.12) saturate(1.06) brightness(1.04);
-    z-index: -2;
-  }
+.hero-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -8px -8px -120px -8px;
+  background-image: var(--hero-img);
+  background-repeat: no-repeat;
+  /* Shifts image to the right and anchors it horizontally */
+  background-position: right 10% top; 
+  background-size: contain; /* Prevents the rig from scaling up too large */
+  filter: url(#hero-sharpen) contrast(1.12) saturate(1.06) brightness(1.04);
+  z-index: -2;
+}
 
   .svg-defs {
     position: absolute;
@@ -131,26 +132,26 @@
     overflow: hidden;
   }
 
-  .hero-wrap::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      90deg,
-      rgba(17, 17, 17, 0.98) 0%,
-      rgba(17, 17, 17, 0.90) 35%,
-      rgba(17, 17, 17, 0.40) 60%,
-      rgba(17, 17, 17, 0.00) 80%
-    );
-    z-index: -1;
-  }
+ .hero-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(17, 17, 17, 1) 0%,
+    rgba(17, 17, 17, 0.95) 40%,
+    rgba(17, 17, 17, 0.20) 65%,
+    rgba(17, 17, 17, 1) 100%
+  );
+  z-index: -1;
+}
 
   .hero {
     position: relative;
     min-height: 70vh;
     display: flex;
     align-items: center;
-    padding: 4rem 4rem 2rem;
+    padding: 1rem;
     width: 100%;
     max-width: 1400px;
   }
@@ -158,6 +159,7 @@
   .hero-content {
     max-width: 560px;
     width: 100%;
+    margin-bottom: auto;
   }
 
   .hero-title {
@@ -398,6 +400,13 @@
     flex-direction: column;
     gap: 0.5rem;
   }
+
+  .hero-wrap::before {
+    background-position: center top;
+    background-size: cover;
+    opacity: 0.4; /* Softens image opacity on tight phone screens so text stays 100% readable */
+  }
+  
 }
 </style>
 </head>
@@ -432,7 +441,8 @@
       <div class="hero-content">
         <h1 class="hero-title">
           Build Below.
-          <span class="highlight">Without Building Over.</span>
+          <span class="highlight">Without <br>
+            Building Over.</span>
         </h1>
         <p class="hero-subtitle">
           Horizontal Directional Drilling<br>
@@ -444,15 +454,19 @@
       </div>
     </header>
 
-    <!-- PROCESS DIAGRAM PLACEHOLDER -->
+        <!-- PROCESS DIAGRAM PLACEHOLDER -->
+<!--         
     <section class="process-section">
-      <!-- Replace the src below with your custom .PNG diagram file -->
+      /*Replace the src below with your custom .PNG diagram file */
       <img src="images/process_diagram.png" alt="Process Diagram" class="process-diagram" onerror="this.style.display='none'; document.getElementById('png-fallback').style.display='block';">
       <div id="png-fallback" style="display:none; padding: 2rem; border: 1px dashed var(--border-color); color: var(--text-muted);">
         [ Insert your process diagram .PNG file here ]
       </div>
     </section>
   </div>
+-->
+
+
 
   <!-- FEATURES GRID -->
   <section class="features-grid">
