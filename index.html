@@ -49,6 +49,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
     /*padding: 1rem 4rem;*/
     border-bottom: 1px solid var(--border-color);
     background: rgba(14, 16, 18, 0.95);
@@ -408,6 +410,225 @@
   }
   
 }
+
+/* ==========================================================================
+   BORECORE Responsive Contact Modal
+   ========================================================================== */
+
+/* Dark Overlay Backdrop */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end; /* Default Mobile: Slides up from bottom */
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.modal-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal Window Container */
+.modal-card {
+  background-color: #1a1a1a;
+  border-top: 2px solid #ff6a00;
+  border-radius: 16px 16px 0 0;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.7);
+  transform: translateY(20px);
+  transition: transform 0.25s ease-in-out;
+}
+
+.modal-overlay.is-active .modal-card {
+  transform: translateY(0);
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #888888;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #ff6a00;
+}
+
+/* Header & Badging */
+.modal-badge {
+  color: #ff6a00;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.modal-header h2 {
+  color: #ffffff;
+  margin: 0.25rem 0;
+  font-size: 1.5rem;
+}
+
+.modal-header p {
+  color: #a0a0a0;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  color: #cccccc;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input, 
+.form-group select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #111111;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 1rem; /* 16px min stops iOS browser auto-zooming */
+  box-sizing: border-box;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+  outline: none;
+  border-color: #ff6a00;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.875rem;
+  background-color: #ff6a00;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #e05d00;
+}
+
+/* Visual Divider */
+.modal-divider {
+  text-align: center;
+  border-bottom: 1px solid #2a2a2a;
+  line-height: 0.1em;
+  margin: 1.5rem 0;
+}
+
+.modal-divider span {
+  background: #1a1a1a;
+  color: #666666;
+  padding: 0 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Phone & Email Direct Cards */
+.direct-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.action-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  background-color: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.action-card:hover {
+  border-color: #ff6a00;
+  background-color: #161616;
+}
+
+.action-icon {
+  font-size: 1.25rem;
+}
+
+.action-text small {
+  display: block;
+  color: #888888;
+  font-size: 0.75rem;
+}
+
+.action-text strong {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Desktop Adaptation (Screens 769px and wider)
+   ========================================================================== */
+@media (min-width: 769px) {
+  .modal-overlay {
+    align-items: center; /* Center vertically on desktop */
+  }
+
+  .modal-card {
+    max-width: 500px;
+    border-radius: 12px; /* Full rounded window */
+    border: 1px solid rgba(255, 106, 0, 0.4);
+    padding: 2rem;
+    transform: scale(0.95);
+  }
+
+  .modal-overlay.is-active .modal-card {
+    transform: scale(1);
+  }
+
+  .direct-actions {
+    flex-direction: row; /* Side-by-side action cards */
+  }
+
+  .action-card {
+    flex: 1;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -431,7 +652,7 @@
       <li><a href="#capabilities">Capabilities</a></li>
       <li><a href="#equipment">Equipment</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="btn-outline">Let's Talk</a></li>
+      <li><a href="#" class="btn" data-modal-target="contact-modal">Let's Talk</a></li>
     </ul>
   </nav>
 
@@ -448,8 +669,8 @@
           Horizontal Directional Drilling<br>
           Underground Utility Installation
         </p>
-        <a href="#contact" class="btn-primary">
-          Let's Talk About Your Project &rarr;
+        <a href="#" class="btn-primary" data-modal-target="contact-modal">
+        Let's Talk About Your Project &rarr;
         </a>
       </div>
     </header>
@@ -529,5 +750,66 @@
     </div>
   </footer>
 
+  <!-- BORECORE Contact Modal -->
+<div id="contact-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+  <div class="modal-card">
+    <button class="modal-close" id="close-modal" aria-label="Close modal">&times;</button>
+    
+    <div class="modal-header">
+      <span class="modal-badge">BORECORE DIRECT</span>
+      <h2 id="modal-title">Start Your Project</h2>
+      <p>Speak with an engineer or request an immediate field quote.</p>
+    </div>
+
+
+    <!--Modal-->
+    
+    <form class="modal-form" id="modal-lead-form" action="/submit-quote" method="POST">
+      <div class="form-group">
+        <label for="user-name">Your Name</label>
+        <input type="text" id="user-name" name="name" placeholder="John Doe" required>
+      </div>
+
+      <div class="form-group">
+        <label for="user-phone">Phone Number</label>
+        <input type="tel" id="user-phone" name="phone" placeholder="(555) 000-0000" required>
+      </div>
+
+      <div class="form-group">
+        <label for="project-type">Project Type</label>
+        <select id="project-type" name="project_type">
+          <option value="directional">Directional Drilling</option>
+          <option value="utility">Utility Installation</option>
+          <option value="other">Other Heavy Boring</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit Request &rarr;</button>
+    </form>
+
+    <div class="modal-divider"><span>OR CONTACT DIRECTLY</span></div>
+
+    <!-- Direct Action Cards (Phone & Email) -->
+    <div class="direct-actions">
+      <a href="tel:18005550199" class="action-card phone-card">
+        <span class="action-icon">📞</span>
+        <div class="action-text">
+          <small>Call Dispatch</small>
+          <strong>1-800-555-0199</strong>
+        </div>
+      </a>
+
+      <a href="mailto:projects@borecore.com?subject=Project%20Inquiry" class="action-card email-card">
+        <span class="action-icon">✉️</span>
+        <div class="action-text">
+          <small>Direct Specs Email</small>
+          <strong>projects@borecore.com</strong>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>
