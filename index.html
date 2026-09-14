@@ -685,7 +685,7 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  margin-bottom: 2rem;
+  /*margin-bottom: 2rem;*/
 }
 
 .nav-arrow {
@@ -711,7 +711,7 @@
 
 .service-counter {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: var(--text-main);
   letter-spacing: 0.05em;
   display: flex;
@@ -807,6 +807,12 @@
   position: absolute;
   left: 0;
   top: 0.15rem;
+}
+
+body::after { /*remove extra black space at the end of the page*/
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /* ==========================================================================
@@ -991,7 +997,7 @@
   </section> 
 -->
 <!-- CENTERED SERVICE CAROUSEL / SINGLE CARD VIEWER -->
-<section class="service-viewer-section">
+<section id="services" class="service-viewer-section">
   <div class="container">
     
     <!-- Controls Header -->
@@ -1129,7 +1135,7 @@
   </section>
 
     <!-- CTA BANNER -->
-  <section class="cta-banner">
+  <section id="about" class="cta-banner">
     <h2 class="cta-title">Have a project that needs to go underground?</h2>
     <div class="cta-highlights">
       <div class="cta-item">
@@ -1142,10 +1148,10 @@
       </div>
       <div class="cta-item">
         <h4>Serving Georgia</h4>
-        <p>Based in Cornelia. Built for the Southeast.</p>
+        <p>Based in Georgia. Built for the Southeast.</p>
       </div>
     </div>
-    <a href="mailto:info@borecore.com" 
+    <a href="mailto:info@borecoreco.com?subject=Inquiry" 
     class="btn-primary"
     target="_blank"
     rel="noopener noreferrer">
@@ -1163,7 +1169,7 @@
     <div class="footer-links">
       <span>Cornelia, Georgia</span>
       <span>info@borecore.com</span>
-      <span>(706) 968-4764</span>
+      <span><a href="tel:15550198321">(555) 019-8321</a></span>
     </div>
   </footer>
 
@@ -1173,11 +1179,15 @@
     <button class="modal-close" id="close-modal" aria-label="Close modal">&times;</button>
     
     <div class="modal-header">
+      <img class="brand-logo" src="images/borecore-logo.png" alt="BORECORE — Underground Infrastructure" />
+      <!--
       <span class="modal-badge">BORECORE DIRECT</span>
       <h2 id="modal-title">Start Your Project</h2>
       <p>Speak with an engineer or request an immediate field quote.</p>
+    -->
     </div>
 
+    <!--
     <form class="modal-form" id="modal-lead-form" action="/submit-quote" method="POST">
       <div class="form-group">
         <label for="user-name">Your Name</label>
@@ -1202,22 +1212,22 @@
     </form>
 
     <div class="modal-divider"><span>OR CONTACT DIRECTLY</span></div>
-
+  -->
     <!-- Direct Action Cards (Phone & Email) -->
     <div class="direct-actions">
-      <a href="tel:18005550199" class="action-card phone-card">
+      <a href="tel:15550198321" class="action-card phone-card">
         <span class="action-icon">📞</span>
         <div class="action-text">
-          <small>Call Dispatch</small>
-          <strong>1-800-555-0199</strong>
+          <small>Give us a call</small>
+          <strong>1-555-019-8321</strong>
         </div>
       </a>
 
-      <a href="mailto:projects@borecore.com?subject=Project%20Inquiry" class="action-card email-card">
+      <a href="mailto:info@borecoreco.com?subject=Inquiry" class="action-card email-card">
         <span class="action-icon">✉️</span>
         <div class="action-text">
-          <small>Direct Specs Email</small>
-          <strong>projects@borecore.com</strong>
+          <small>Send us an email</small>
+          <strong>info@borecoreco.com</strong>
         </div>
       </a>
     </div>
