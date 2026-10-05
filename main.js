@@ -1,3 +1,42 @@
+//card carousel 
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.viewer-card');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  const activeIndexEl = document.querySelector('.active-index');
+  const titleIndicator = document.querySelector('.service-title-indicator');
+
+  const titles = [
+    " HORIZONTAL DIRECTIONAL DRILLING",
+    " ELECTRIC & TELECOM",
+    " WATER, SEWER & GAS",
+    " TRENCHLESS SUPPORT"
+  ];
+
+  let currentIndex = 0;
+
+  function updateCard(index) {
+    cards.forEach((card, i) => {
+      card.classList.toggle('active', i === index);
+    });
+    activeIndexEl.textContent = String(index + 1).padStart(2, '0');
+    titleIndicator.textContent = titles[index];
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    updateCard(currentIndex);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    updateCard(currentIndex);
+  });
+});
+
+
+
+//modal
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('contact-modal');
   const closeBtn = document.getElementById('close-modal');

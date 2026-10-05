@@ -231,13 +231,16 @@
     grid-template-columns: repeat(4, 1fr);
     border-bottom: 1px solid var(--border-color);
     width: 100%;
+    border-bottom: 2px solid #f59e0b;
   }
 
   .feature-card {
+    background: transparent;
     padding: 3rem 2.5rem;
     border-right: 1px solid var(--border-color);
     background-color: var(--bg-card);
     transition: background 0.2s ease;
+    
   }
 
   .feature-card:last-child {
@@ -408,6 +411,18 @@
     background-size: cover;
     opacity: 0.4; /* Softens image opacity on tight phone screens so text stays 100% readable */
   }
+
+  .card-bullet-grid {
+    grid-template-columns: 1fr;
+  }
+  .viewer-controls {
+    gap: 1rem;
+  }
+  .service-title-indicator {
+    display: none;
+    font-size:  1.5rem;
+    font-weight: 700;      /* Makes it bold */
+    }
   
 }
 
@@ -601,6 +616,206 @@
 }
 
 /* ==========================================================================
+   BORECORE - HORIZONTAL SPEC BAR (DARK INDUSTRIAL THEME)
+   ========================================================================== */
+
+/* Outer Wrapper (Edge-to-Edge Dark Strip) */
+.spec-bar {
+  background-color: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 2px solid var(--accent-gold);
+  padding: 1.25rem 0;
+  width: 100%;
+  margin-bottom: 3.5rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid #f59e0b;
+}
+
+/* Base Layout: Mobile / Small Screens First */
+.spec-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 1rem;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.spec-value {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.2); /* Subtle metallic glow */
+}
+
+.spec-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.35rem;
+}
+
+/* ==========================================================================
+   CENTERED SINGLE-CARD SERVICE VIEWER
+   ========================================================================== */
+
+.service-viewer-section {
+  padding: 4rem 0;
+}
+
+/* Navigation Header Controls */
+.viewer-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  /*margin-bottom: 2rem;*/
+}
+
+.nav-arrow {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--accent-gold);
+  font-size: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.nav-arrow:hover {
+  background: var(--accent-gold);
+  color: #000;
+  border-color: var(--accent-gold);
+}
+
+.service-counter {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--text-main);
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.active-index {
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.service-title-indicator {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-main);
+  margin-left: 0.5rem;
+}
+
+/* Centered Card Wrapper */
+.viewer-card-wrapper {
+  max-width: 850px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Individual Cards */
+.viewer-card {
+  display: none; /* Controlled via JS */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-top: 3px solid var(--accent-gold);
+  padding: 2.5rem;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.viewer-card.active {
+  display: block;
+}
+
+.card-badge {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.viewer-card h3 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.card-summary {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+}
+
+/* 2-Column Bullet Grid Inside the Card */
+.card-bullet-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.card-bullet-grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-bullet-grid li {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.card-bullet-grid li::before {
+  content: "■";
+  color: var(--accent-gold);
+  font-size: 0.65rem;
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+}
+
+body::after { /*remove extra black space at the end of the page*/
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ==========================================================================
    Desktop Adaptation (Screens 769px and wider)
    ========================================================================== */
 @media (min-width: 769px) {
@@ -627,6 +842,42 @@
   .action-card {
     flex: 1;
   }
+
+  .spec-bar {
+    /*padding: 1.5rem 0;*/
+    margin-bottom: 0;
+  }
+
+  .spec-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .spec-item {
+    flex: 1;
+    padding-bottom: 0;
+  }
+
+  /* Vertical Divider Between Items on Desktop */
+  .spec-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -0.75rem;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--border-color), transparent);
+  }
+
+  .spec-value {
+    font-size: 1.75rem;
+  }
+
+  .spec-label {
+    font-size: 0.8125rem;
+  }
 }
 
 </style>
@@ -649,8 +900,8 @@
     <img class="brand-logo" src="images/borecore-logo.png" alt="BORECORE — Underground Infrastructure" />
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#capabilities">Capabilities</a></li>
-      <li><a href="#equipment">Equipment</a></li>
+      <!--<li><a href="#capabilities">Capabilities</a></li>-->
+      <!--<li><a href="#equipment">Equipment</a></li>-->
       <li><a href="#about">About</a></li>
       <li><a href="#" class="btn" data-modal-target="contact-modal">Let's Talk</a></li>
     </ul>
@@ -687,9 +938,41 @@
   </div>
 -->
 
+<!-- HORIZONTAL SPEC BAR (TELEMETRY DASHBOARD STYLE) -->
+<div class="spec-bar">
+  <div class="spec-container">
+    
+    <div class="spec-item">
+      <span class="spec-tag"> CAPACITY</span>
+      <span class="spec-value">Up to 24”</span>
+      <span class="spec-label">Bore Diameter & Pullback</span>
+    </div>
+
+    <div class="spec-item">
+      <span class="spec-tag"> TERRAIN</span>
+      <span class="spec-value">ROCK / DIRT / URBAN</span>
+      <span class="spec-label">Congested Right-of-Way</span>
+    </div>
+
+    <div class="spec-item">
+      <span class="spec-tag"> DISCIPLINES</span>
+      <span class="spec-value">UNDERGROUND INFRASTRUCTURE</span>
+      <!--<span class="spec-label">+ Wet Utility Infrastructure</span> -->
+    </div>
+
+    <div class="spec-item">
+      <span class="spec-tag"> SCOPE</span>
+      <span class="spec-value">TRUSTED HDD PARTNER</span>
+      <span class="spec-label">Plan • Locate • Bore • Fuse</span>
+    </div>
+
+  </div>
+</div>
 
 
   <!-- FEATURES GRID -->
+
+  <!--
   <section class="features-grid">
     <div class="feature-card">
       <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
@@ -706,15 +989,152 @@
       <h3 class="feature-title">Experience</h3>
       <p class="feature-desc">Skilled operators. Proven process. Solid results.</p>
     </div>
+     <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-3-3.87M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10"/><circle cx="9" cy="9" r="2"/></svg>
+      <h3 class="feature-title">Partnership</h3>
+      <p class="feature-desc">We work directly with you to keep your infrastructure project moving.</p>
+    </div>
+  </section> 
+-->
+<!-- CENTERED SERVICE CAROUSEL / SINGLE CARD VIEWER -->
+<section id="services" class="service-viewer-section">
+  <div class="container">
+    
+    <!-- Controls Header -->
+    <div class="viewer-controls">
+      <button class="nav-arrow prev-btn" aria-label="Previous Service">&#8592;</button>
+      <div class="service-counter">
+        <span class="active-index">01</span> / <span class="total-count">04</span>
+        <span class="service-title-indicator"> HORIZONTAL DIRECTIONAL DRILLING</span>
+      </div>
+      <button class="nav-arrow next-btn" aria-label="Next Service">&#8594;</button>
+    </div>
+
+    <!-- Centered Card Container -->
+    <div class="viewer-card-wrapper">
+      
+      <!-- CARD 1: HDD (Active by default) -->
+      <div class="viewer-card active" data-index="1">
+        <div class="card-badge">PRIMARY DISCIPLINE</div>
+        <h3>Horizontal Directional Drilling (HDD)</h3>
+        <p class="card-summary">
+          Precision pilot bores, multi-stage hole enlargement, and product pipe pullback up to 24” in complex soil, rock, and congested urban rights-of-way.
+        </p>
+        <div class="card-bullet-grid">
+          <ul>
+            <li>Pilot Bore & Multi-Stage Reaming</li>
+            <li>Up to 24” Product Pipe Pullback</li>
+            <li>Rock & Hard-Scrabble Applications</li>
+            <li>River, Creek & Highway Crossings</li>
+          </ul>
+          <ul>
+            <li>HDPE, PVC & Steel Pipe Fusion</li>
+            <li>Urban Right-of-Way Navigation</li>
+            <li>Long-Bore Distance Crossings</li>
+            <li>Environmentally Sensitive Bores</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CARD 2: POWER & TELECOM -->
+      <div class="viewer-card" data-index="2">
+        <div class="card-badge">UTILITY INFRASTRUCTURE</div>
+        <h3>Electric & Telecommunications</h3>
+        <p class="card-summary">
+          Trenchless conduit installation for high-voltage power distribution, substation feeds, backbone fiber optics, and dense municipal duct banks.
+        </p>
+        <div class="card-bullet-grid">
+          <ul>
+            <li>Primary & Secondary Power Conduit</li>
+            <li>Substation & Data Center Feeds</li>
+            <li>Backbone Fiber Construction</li>
+            <li>Underground Service Extensions</li>
+          </ul>
+          <ul>
+            <li>Telecommunications Duct Banks</li>
+            <li>Fiber-to-the-Home (FTTH) Systems</li>
+            <li>Renewable Energy Feeder Lines</li>
+            <li>Street Lighting & Signal Conduit</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CARD 3: WET UTILITIES & GAS -->
+      <div class="viewer-card" data-index="3">
+        <div class="card-badge">PRESSURE PIPELINES</div>
+        <h3>Water, Sewer & Natural Gas</h3>
+        <p class="card-summary">
+          Trenchless installation for pressure water mains, sewer force mains, and natural gas distribution lines.
+        </p>
+        <div class="card-bullet-grid">
+          <ul>
+            <li>HDPE Water Main Installation</li>
+            <li>Transmission Main Water Crossings</li>
+            <li>Sewer Force Main Construction</li>
+            <li>Natural Gas Main & Service Extensions</li>
+          </ul>
+          <ul>
+            <li>Certified HDPE Butt Fusion</li>
+            <li>Trenchless Sewer Relocations</li>
+            <li>Energy Corridor Development</li>
+            <li>Waterway Pressure Crossings</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CARD 4: TRENCHLESS SUPPORT -->
+      <div class="viewer-card" data-index="4">
+        <div class="card-badge">PROJECT EXECUTION</div>
+        <h3>Trenchless Support Services</h3>
+        <p class="card-summary">
+          Complete end-to-end site coordination, electronic bore tracking, utility strike prevention, and optimal project management for prime contractors.
+        </p>
+        <div class="card-bullet-grid">
+          <ul>
+            <li>Utility Locating & Vacuum Potholing</li>
+            <li>Bore Path Design & Route Optimization</li>
+            <li>Utility Conflict Resolution</li>
+          </ul>
+          <ul>
+            <li>Maintenance of Traffic (MOT)</li>
+            <li>Direct Owner Field Oversight</li>
+            <li>Daily Production & Depth Logs</li>
+            <li>Emergency Utility Response Support</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+   <!-- FEATURES GRID -->
+  <section class="features-grid">
     <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+      <h3 class="feature-title">Precision</h3>
+      <p class="feature-desc">Accurate drilling. Precise installation. Every single time.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <h3 class="feature-title">Safety</h3>
+      <p class="feature-desc">Our crew, your project, the community. Always prioritized.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <h3 class="feature-title">Experience</h3>
+      <p class="feature-desc">Skilled operators. Proven process. Solid results.</p>
+    </div>
+     <div class="feature-card">
       <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-3-3.87M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10"/><circle cx="9" cy="9" r="2"/></svg>
       <h3 class="feature-title">Partnership</h3>
       <p class="feature-desc">We work directly with you to keep your infrastructure project moving.</p>
     </div>
   </section>
 
-  <!-- CTA BANNER -->
-  <section class="cta-banner">
+    <!-- CTA BANNER -->
+  <section id="about" class="cta-banner">
     <h2 class="cta-title">Have a project that needs to go underground?</h2>
     <div class="cta-highlights">
       <div class="cta-item">
@@ -726,11 +1146,11 @@
         <p>Roads, driveways, utilities, waterways, and more.</p>
       </div>
       <div class="cta-item">
-        <h4>Serving Georgia</h4>
-        <p>Based in Cornelia. Built for the Southeast.</p>
+        <h4>Serving the Southeast</h4>
+        <p>Based in Georgia. Built for the Southeast.</p>
       </div>
     </div>
-    <a href="mailto:info@borecore.com" 
+    <a href="mailto:info@borecoreco.com?subject=Inquiry" 
     class="btn-primary"
     target="_blank"
     rel="noopener noreferrer">
@@ -738,6 +1158,8 @@
     </a>
   </section>
 
+ 
+  
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-left">
@@ -746,7 +1168,7 @@
     <div class="footer-links">
       <span>Cornelia, Georgia</span>
       <span>info@borecore.com</span>
-      <span>(706) 968-4764</span>
+      <span><a href="tel:15550198321">(555) 019-8321</a></span>
     </div>
   </footer>
 
@@ -756,14 +1178,15 @@
     <button class="modal-close" id="close-modal" aria-label="Close modal">&times;</button>
     
     <div class="modal-header">
+      <img class="brand-logo" src="images/borecore-logo.png" alt="BORECORE — Underground Infrastructure" />
+      <!--
       <span class="modal-badge">BORECORE DIRECT</span>
       <h2 id="modal-title">Start Your Project</h2>
       <p>Speak with an engineer or request an immediate field quote.</p>
+    -->
     </div>
 
-
-    <!--Modal-->
-    
+    <!--
     <form class="modal-form" id="modal-lead-form" action="/submit-quote" method="POST">
       <div class="form-group">
         <label for="user-name">Your Name</label>
@@ -788,22 +1211,22 @@
     </form>
 
     <div class="modal-divider"><span>OR CONTACT DIRECTLY</span></div>
-
+  -->
     <!-- Direct Action Cards (Phone & Email) -->
     <div class="direct-actions">
-      <a href="tel:18005550199" class="action-card phone-card">
+      <a href="tel:15550198321" class="action-card phone-card">
         <span class="action-icon">📞</span>
         <div class="action-text">
-          <small>Call Dispatch</small>
-          <strong>1-800-555-0199</strong>
+          <small>Give us a call</small>
+          <strong>1-555-019-8321</strong>
         </div>
       </a>
 
-      <a href="mailto:projects@borecore.com?subject=Project%20Inquiry" class="action-card email-card">
+      <a href="mailto:info@borecoreco.com?subject=Inquiry" class="action-card email-card">
         <span class="action-icon">✉️</span>
         <div class="action-text">
-          <small>Direct Specs Email</small>
-          <strong>projects@borecore.com</strong>
+          <small>Send us an email</small>
+          <strong>info@borecoreco.com</strong>
         </div>
       </a>
     </div>
